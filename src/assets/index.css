@@ -1,0 +1,37 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --bk1: rgb(17, 17, 17);
+    --bk2: rgba(17, 17, 17, 0.7);
+    --pink: #ff3c78;
+    --transition: 0.5s;
+    --container-width-lg: 75%;
+    --container-width-md: 86%;
+    --container-width-sm: 90%;
+}
+
+.darkmode {
+    --blue: #1e90ff;
+    --bk2: rgba(255, 255, 255, 0.8);
+    --white: rgb(17, 17, 17);
+    --bk1: #ffffff;
+    --pink: #ff3c78;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+.container {
+    width: var(--container-width-lg);
+    height: auto;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
