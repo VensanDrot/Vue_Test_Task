@@ -1,7 +1,5 @@
 .overlay_create {
-    --tw-bg-opacity: 1;
-    background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-    --tw-bg-opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
     position: fixed;
     top: 0px;
@@ -13,8 +11,6 @@
 }
 
 .dialog_create {
-    --tw-bg-opacity: 1;
-    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
     border-radius: 0.75rem;
     margin-left: auto;
     margin-right: auto;
