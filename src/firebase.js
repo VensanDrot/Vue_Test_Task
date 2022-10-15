@@ -37,11 +37,16 @@ export const deleteQuote = (id) => {
 };
 
 export const useLoadQuotes = () => {
-  const quotes = ref([]);
-  const close = quotesCollection.onSnapshot((snapshot) => {
-    quotes.value = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  });
-  onUnmounted(close);
-  return quotes;
+  const quotes = ref([])
+  const close = quotesCollection.onSnapshot(snapshot => {
+    quotes.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  console.log(quotes)
+  return quotes
+    
 };
-/**/
+/*
+ var quote = [doc.data()];
+        quotes.push(quote)
+*/

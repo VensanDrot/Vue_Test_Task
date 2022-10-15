@@ -5,17 +5,23 @@ import './index.css'
 <template>
     <div class="card_container">
         <form class="content">
+        <label>The quote:</label>
         <textarea name="Text" class="text_area" readonly>{{card.Text}}
         </textarea>
+        <label>Author:</label>
         <textarea name="Author" class="text_area" readonly>{{card.Author}}
         </textarea>
+        <label>Genre:</label>
         <textarea name="Genre" class="text_area" readonly>{{card.Genre}}
         </textarea>
-        <textarea name="Id" class="text_area" readonly>{{card.Id}}
+        <label>Id:</label>
+        <textarea name="Id" class="text_area_fixed" readonly>{{card.id}}
         </textarea>
-        <textarea name="Create_Time" class="text_area" readonly>{{card.Create_Time}}
+        <label>Creation time:</label>
+        <textarea name="Create_Time" class="text_area_fixed" readonly>{{card.Create_Time}}
         </textarea>
-        <textarea name="Edit_Time" class="text_area" readonly>{{card.Edit_Time}}
+        <label>Edition time:</label>
+        <textarea name="Edit_Time" class="text_area_fixed" readonly>{{card.Edit_Time}}
         </textarea>
         </form>
 
