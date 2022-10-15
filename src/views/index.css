@@ -9,21 +9,6 @@
 
 .search_input {
     padding: 0.45rem 0.9rem;
-    border: 1px solid var(--blue);
-}
-
-.card_holder {
-    margin: 0;
-    display: grid;
-    padding: 1.2rem;
-    width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.2rem;
-    align-items: center;
-    justify-content: center;
-}
-
-.aligner {
-    display: flex;
-    justify-content: center;
+    border: 1px solid var(--bcolor);
+    border-radius: 5px;
 }

@@ -7,8 +7,10 @@
 :root {
     --blue: #1e90ff;
     --white: #ffffff;
-    --bk1: rgb(17, 17, 17);
-    --bk2: rgba(17, 17, 17, 0.7);
+    --bk1: rgb(77, 17, 16);
+    --bk2: rgba(77, 17, 16, 0.7);
+    --bk3: rgba(119, 26, 12);
+    --bcolor: rgb(162, 139, 113);
     --pink: #ff3c78;
     --transition: 0.5s;
     --container-width-lg: 75%;
@@ -16,18 +18,15 @@
     --container-width-sm: 90%;
 }
 
-.darkmode {
-    --blue: #1e90ff;
-    --bk2: rgba(255, 255, 255, 0.8);
-    --white: rgb(17, 17, 17);
-    --bk1: #ffffff;
-    --pink: #ff3c78;
-}
-
 body {
     margin: 0;
     padding: 0;
     background-color: black;
+    background-image: url(./bk.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-attachment: fixed;
     color: white;
 }
 
@@ -45,16 +44,26 @@ h1 {
 .btn {
     width: max-content;
     display: inline-block;
-    color: var(--blue);
+    font-weight: 600;
+    color: var(--bk1);
     padding: 0.45rem 0.9rem;
     border-radius: 0.4rem;
     cursor: pointer;
-    border: 1px solid var(--white);
+    border: 3px solid var(--bcolor);
     transition: var(--transition);
 }
 
 .btn:hover {
-    background-color: var(--blue);
+    background-color: var(--bk2);
     color: var(--white);
     border-color: transparent;
+}
+
+.btn-primary {
+    color: var(--white);
+    background-color: var(--bk1);
+}
+
+.btn-primary:hover {
+    background-color: var(--bk3);
 }

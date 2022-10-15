@@ -24,17 +24,28 @@ import './index.css'
             <textarea name="Edit_Time" class="text_area_fixed" readonly>{{card.Edit_Time}}
         </textarea>
             <div class="button_container">
-                <button class="btn" type="button" @click="deleteQuote(card.id)">Delete</button>
+                <button class="btn" type="button" @click="showDialog = true">Delete</button>
                 <button class="btn" type="button" @click="">Update</button>
             </div>
         </form>
 
     </div>
+    <Dialog 
+    :show="showDialog"
+    :cancel="cancel"
+    :confirm="confirm"
+    :id = "card.id"
+    title="Delete a quote?"
+    description="Are you sure you want to delete this quote?">
+    </Dialog>
 </template>
+
+
 
 
 <script>
 import { deleteQuote } from '../../firebase'
+import Dialog from '../DelDiologe/index.vue'
 import { ref } from 'vue'
 
 
@@ -42,10 +53,23 @@ import { ref } from 'vue'
 export default {
     name: 'card',
     props: ['card'],
+    components: { Dialog },
+    data() {
+    return {
+      showDialog: false,
+      showDialogUser: false,
+    }
+  },
+  methods: {
+    cancel() {
+      this.showDialog = false;
+      this.showDialogUser = false;
+    },
+    confirm(id) {
+      deleteQuote(id)
+      this.showDialog = false;
+    },
 }
-
-
-
-
+}
 
 </script>

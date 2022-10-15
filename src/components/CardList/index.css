@@ -1,0 +1,14 @@
+.card_holder {
+    margin: 0;
+    display: grid;
+    padding: 1.2rem;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+.aligner {
+    display: flex;
+    justify-content: center;
+}

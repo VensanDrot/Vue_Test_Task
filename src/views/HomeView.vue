@@ -11,7 +11,7 @@ import "./index.css"
     </form>
     <button type="button" class="btn">Create Card</button>
   </div>
-  <CreateCard />
+  
   <CardList />
  
 </template>

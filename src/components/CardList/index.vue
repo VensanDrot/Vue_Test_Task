@@ -19,6 +19,7 @@
 
 
 <script>
+import './index.css'
 import Card from '../Card/index.vue'
 import { useLoadQuotes,deleteQuote } from '@/firebase'
 export default {
