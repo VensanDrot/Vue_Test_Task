@@ -1,7 +1,5 @@
 .overlay {
-    --tw-bg-opacity: 1;
-    background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-    --tw-bg-opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
     position: fixed;
     top: 0px;
@@ -13,8 +11,7 @@
 }
 
 .dialog {
-    --tw-bg-opacity: 1;
-    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 0.75rem;
     margin-left: auto;
     margin-right: auto;
@@ -36,16 +33,14 @@
     font-size: 1.125rem;
     line-height: 1.75rem;
     margin-bottom: 0.5rem;
-    --tw-text-opacity: 1;
-    color: rgba(17, 24, 39, var(--tw-text-opacity));
+    color: rgba(17, 24, 39, 1);
 }
 
 .dialog__description {
     font-size: 0.875rem;
     line-height: 1.25rem;
     margin-bottom: 1rem;
-    --tw-text-opacity: 1;
-    color: rgba(107, 114, 128, var(--tw-text-opacity));
+    color: rgba(107, 114, 128, 1);
 }
 
 .dialog__footer {
