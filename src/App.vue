@@ -1,14 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import Nav from "./components/Nav/index.vue"
-import HomeView from "./views/HomeView.vue"
 
 </script>
 
 <template>
-  <Nav> </Nav>
 
   <div class="container">
+    <h1 class="welcome">Welcome To Qoute Heaven</h1>
     <RouterView />
   </div>
 </template>

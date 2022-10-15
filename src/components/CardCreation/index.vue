@@ -14,9 +14,12 @@ import '../Card/index.vue'
         <label>Genre:</label>
         <textarea name="Genre" class="text_area text_area_active" v-model="quote.Genre"></textarea>
         <label class="error">{{error_genre}}</label>
-        <button type="button" style="margin-top:5px" class="btn" @click="getData()">Create</button>
+        <div class="button_container">
+        <button type="button"  class="btn" @click="getData()">Create</button>
+        <button type="button" class="btn" @click="cancel">Close</button>
+        </div>
         </form>
-       
+        
     </div>
 </template>
 
@@ -25,6 +28,7 @@ import '../Card/index.vue'
 import { createQuote } from '../../firebase'
 export default {
     name: 'CardCreation',
+    props: ["cancel"],
     data() {
         return {
         quote: {

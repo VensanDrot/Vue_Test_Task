@@ -1,9 +1,12 @@
 <template>
+    
+    
     <div v-show="show" class="overlay" >
-  
-  
+      
       <div class="dialog"   >
-  
+        
+        
+
         <div class="dialog__content">
           <h2 class="dialog__title" v-text="title"></h2>
           <p class="dialog__description" v-text="description"></p>
@@ -24,6 +27,6 @@
   <script>
   import './index.css'
   export default {
-      props: ['show', 'title', 'description', 'cancel', 'confirm', 'id']
-  }
+    props: ["show", "title", "description", "cancel", "confirm", "id"],
+}
   </script>

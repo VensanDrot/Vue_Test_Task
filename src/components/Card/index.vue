@@ -57,13 +57,11 @@ export default {
     data() {
     return {
       showDialog: false,
-      showDialogUser: false,
     }
   },
   methods: {
     cancel() {
       this.showDialog = false;
-      this.showDialogUser = false;
     },
     confirm(id) {
       deleteQuote(id)

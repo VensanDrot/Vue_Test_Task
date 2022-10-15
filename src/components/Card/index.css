@@ -15,7 +15,7 @@
     max-height: 60px;
     overflow-y: scroll;
     resize: none;
-    padding: 0;
+    padding: 1px;
     overflow: hidden;
     background-color: transparent;
     color: var(--white);
@@ -25,7 +25,7 @@
 }
 
 .text_area_active {
-    outline: 1px solid var(--blue);
+    outline: 1px solid var(--bcolor);
     resize: vertical;
 }
 
