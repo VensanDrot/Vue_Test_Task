@@ -1,6 +1,7 @@
 <script setup>
 import CardList from '../components/CardList/index.vue'
-import './index.css'
+import CreateCard from '../components/CardCreation/index.vue'
+import "./index.css"
 </script>
 
 <template>
@@ -10,12 +11,13 @@ import './index.css'
     </form>
     <button type="button" class="btn">Create Card</button>
   </div>
+  <CreateCard />
   <CardList />
  
 </template>
 
 <script>
-import {reactive} from 'vue' 
+
 import {createQuote, useLoadQuotes} from "../firebase"
 
 export default {

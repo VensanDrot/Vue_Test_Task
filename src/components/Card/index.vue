@@ -4,42 +4,48 @@ import './index.css'
 
 <template>
     <div class="card_container">
-        <form class="content">
-        <label>The quote:</label>
-        <textarea name="Text" class="text_area" readonly>{{card.Text}}
+        <form class="content" key={{card.id}}>
+            <label>The quote:</label>
+            <textarea name="Text" class="text_area" readonly>{{card.Text}}
         </textarea>
-        <label>Author:</label>
-        <textarea name="Author" class="text_area" readonly>{{card.Author}}
+            <label>Author:</label>
+            <textarea name="Author" class="text_area" readonly>{{card.Author}}
         </textarea>
-        <label>Genre:</label>
-        <textarea name="Genre" class="text_area" readonly>{{card.Genre}}
+            <label>Genre:</label>
+            <textarea name="Genre" class="text_area" readonly>{{card.Genre}}
         </textarea>
-        <label>Id:</label>
-        <textarea name="Id" class="text_area_fixed" readonly>{{card.id}}
+            <label>Id:</label>
+            <textarea name="Id" class="text_area_fixed" readonly>{{card.id}}
         </textarea>
-        <label>Creation time:</label>
-        <textarea name="Create_Time" class="text_area_fixed" readonly>{{card.Create_Time}}
+            <label>Creation time:</label>
+            <textarea name="Create_Time" class="text_area_fixed" readonly>{{card.Create_Time}}
         </textarea>
-        <label>Edition time:</label>
-        <textarea name="Edit_Time" class="text_area_fixed" readonly>{{card.Edit_Time}}
+            <label>Last edit:</label>
+            <textarea name="Edit_Time" class="text_area_fixed" readonly>{{card.Edit_Time}}
         </textarea>
+            <div class="button_container">
+                <button class="btn" type="button" @click="deleteQuote(card.id)">Delete</button>
+                <button class="btn" type="button" @click="">Update</button>
+            </div>
         </form>
 
-        <!--
-        <p>Quote: {{card.Text}}</p>
-        <p>Author: {{card.Author}}</p>
-        <p>Genre: {{card.Genre}}</p>
-        <p>Id: {{card.Id}}</p>
-        <p>Creation time: {{card.Create_Time}}</p>
-        <p>Edit time: {{card.Edit_Time}}</p>
-        -->
     </div>
 </template>
 
 
 <script>
+import { deleteQuote } from '../../firebase'
+import { ref } from 'vue'
+
+
+
 export default {
     name: 'card',
-    props: ['card']
+    props: ['card'],
 }
+
+
+
+
+
 </script>
