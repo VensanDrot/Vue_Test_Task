@@ -25,10 +25,10 @@ import '../Card/index.vue'
 
 
 <script>
-import { createQuote } from '../../firebase'
+import { createQuote, useLoadQuotes } from '../../firebase'
 export default {
     name: 'CardCreation',
-    props: ["cancel"],
+    props: ["cancel", "rebuild"],
     data() {
         return {
             quote: {
@@ -66,17 +66,22 @@ export default {
             }
             const current = new Date();
             var hourse = current.getHours();
+            var min = current.getMinutes();
             hourse = ("0" + hourse).slice(-2);
-            this.quote.Create_Time = `${hourse}:${current.getMinutes()} ${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+            min = ("0" + min).slice(-2);
+            this.quote.Create_Time = `${hourse}:${min} ${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
             this.quote.Edit_Time = this.quote.Create_Time;
             if (this.quote.Create_Time !== null && this.quote.Edit_Time !== null) {
                 createQuote(this.quote)
                 this.quote.Author = null;
                 this.quote.Text = null;
                 this.quote.Genre = null;
+                this.quote.Edit_Time = null;
+                this.quote.Create_Time = null;
+                this.rebuild();
                 this.cancel();
             }
-        }
+        },
     }
 }
 

@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
 
   <div class="container">
-    <h1 class="welcome">Welcome To Qoute Heaven</h1>
+    <h1 class="welcome">Welcome To Quote Heaven</h1>
     <RouterView />
   </div>
 </template>

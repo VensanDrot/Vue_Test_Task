@@ -10,10 +10,10 @@ import "./index.css"
     </form>
     <button type="button" class="btn" @click="showDialog = true">Create Card</button>
   </div>
-
-  <CardList />
-  <DialogCreator :show="showDialog" :cancel="cancel">
+  <DialogCreator :show="showDialog" :cancel="cancel" :rebuild="rebuild">
   </DialogCreator>
+  <CardList :quotes="quotes" />
+  
 
 </template>
 
@@ -25,20 +25,23 @@ export default {
   name: 'HomeView',
   components: { DialogCreator },
   setup() {
-    const quotes = useLoadQuotes();
-    return { quotes }
   },
   data() {
     return {
       showDialog: false,
+      quotes: useLoadQuotes(),
     }
   },
   methods: {
     cancel() {
       this.showDialog = false;
     },
+    rebuild() {
+      this.quotes = useLoadQuotes();
+    }
   },
 
 }
+
 
 </script>

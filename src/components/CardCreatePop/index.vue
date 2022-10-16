@@ -4,7 +4,7 @@
     <div v-show="show" class="overlay_create">
 
         <div class="dialog_create">
-            <CreateCard :cancel="cancel"></CreateCard>
+            <CreateCard :cancel="cancel" :rebuild="rebuild"></CreateCard>
         </div>
 
     </div>
@@ -14,7 +14,7 @@
 import './index.css'
 import CreateCard from '../CardCreation/index.vue'
 export default {
-    props: ["show", "cancel"],
-    components: { CreateCard }
+    props: ["show", "cancel", "rebuild"],
+    components: { CreateCard },
 }
 </script>

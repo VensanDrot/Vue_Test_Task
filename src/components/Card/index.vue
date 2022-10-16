@@ -62,7 +62,7 @@
             <div class="button_container">
                 <button class="btn" type="button" @click="showDialog = true" v-if="validated">Delete</button>
                 <button class="btn btn-primary" type="button" @click="edit(id)" v-if="!validated">Submit</button>
-                <button class="btn" type="button" @click="validated=!validated , save(card) ">Update</button>
+                <button class="btn" type="button" @click="validated=!validated , save(card) ">{{!validated? 'Stop' : 'Update'}}</button>
 
             </div>
         </form>
@@ -139,7 +139,9 @@ export default {
             const current = new Date();
             var hourse = current.getHours();
             hourse = ("0" + hourse).slice(-2);
-            this.quote.Edit_Time = `${hourse}:${current.getMinutes()} ${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+            var min = current.getMinutes();
+            min = ("0" + min).slice(-2);
+            this.quote.Edit_Time = `${hourse}:${min} ${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
             updateQuote(this.id, this.quote);
             this.validated=!this.validated
 
