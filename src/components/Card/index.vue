@@ -2,30 +2,61 @@
 
 <template>
 
-    <div class="card_container"  >
-        
+    <div class="card_container">
+
         <form class="content" key={{card.id}}>
 
             <label>The quote:</label>
-            <textarea name="Text" class="text_area" v-model="quote.Text" :disabled="validated ? '' : disabled">
+            <textarea 
+            class="text_area" 
+            :class="!validated && 'text_area_active'" 
+            v-model="quote.Text"
+            :disabled="validated ? '' : disabled"
+            >
             </textarea>
             <label class="error" v-if="!validated">{{error_text}}</label>
             <label>Author:</label>
-            <textarea name="Author" class="text_area" v-model="quote.Author" :disabled="validated ? '' : disabled">
+            <textarea 
+            class="text_area" 
+            :class="!validated && 'text_area_active'" 
+            v-model="quote.Author" 
+            :disabled="validated ? '' : disabled"
+            >
             </textarea>
+
             <label class="error" v-if="!validated">{{error_author}}</label>
             <label>Genre:</label>
-            <textarea name="Genre" class="text_area" v-model="quote.Genre" :disabled="validated ? '' : disabled">
+            <textarea 
+            class="text_area" 
+            :class="!validated && 'text_area_active'" 
+            v-model="quote.Genre" 
+            :disabled="validated ? '' : disabled"
+            >
             </textarea>
-            <label class="error" v-if="!validated">{{error_genre}}</label>
+
+            <label v-if="!validated">{{error_genre}}</label>
             <label v-if="validated">Id:</label>
-            <textarea name="Id" class="text_area_fixed" v-model="id" v-if="validated" readonly>
+            <textarea 
+            class="text_area_fixed" 
+            v-model="id" 
+            v-if="validated" 
+            readonly>
             </textarea>
+
             <label v-if="validated">Creation time:</label>
-            <textarea name="Create_Time" class="text_area_fixed" v-model="quote.Create_Time" v-if="validated" readonly>
+            <textarea 
+            class="text_area_fixed" 
+            v-model="quote.Create_Time" 
+            v-if="validated" 
+            readonly>
             </textarea>
+
             <label v-if="validated">Last edit:</label>
-            <textarea name="Edit_Time" class="text_area_fixed" v-model="quote.Edit_Time" v-if="validated" readonly>
+            <textarea 
+            class="text_area_fixed" 
+            v-model="quote.Edit_Time" 
+            v-if="validated" 
+            readonly>
             </textarea>
 
             <div class="button_container">
@@ -40,14 +71,14 @@
     <Dialog :show="showDialog" :cancel="cancel" :confirm="confirm" :id="card.id" title="Delete a quote?"
         description="Are you sure you want to delete this quote?">
     </Dialog>
-    
+
 </template>
 
 
 
 
 <script>
-import { deleteQuote } from '../../firebase'
+import { deleteQuote, updateQuote } from '../../firebase'
 import Dialog from '../DelDiologe/index.vue'
 import './index.css'
 import { ref } from 'vue'
@@ -58,8 +89,8 @@ export default {
     name: 'card',
     props: ['card'],
     components: { Dialog },
-    
-    data: function() {
+
+    data: function () {
         return {
             quote: {
                 Text: this.card.Text,
@@ -85,6 +116,7 @@ export default {
             this.showDialog = false;
         },
         edit(id) {
+
             this.error_text = null;
             this.error_author = null;
             this.error_genre = null;
@@ -104,8 +136,12 @@ export default {
             if (/\d/.test(this.quote.Genre)) {
                 return this.error_genre = "Genre line cant contain digits"
             }
-
-
+            const current = new Date();
+            var hourse = current.getHours();
+            hourse = ("0" + hourse).slice(-2);
+            this.quote.Edit_Time = `${hourse}:${current.getMinutes()} ${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+            updateQuote(this.id, this.quote);
+            this.validated=!this.validated
 
         },
         save(card) {
@@ -118,7 +154,7 @@ export default {
             console.log(this.quote);
         }
     },
-    
+
 }
 
 </script>
