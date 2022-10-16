@@ -1,61 +1,61 @@
 .card_container {
-    background-color: var(--bk2);
-    backdrop-filter: blur(3px);
-    width: 300px;
-    height: 430px;
-    border: 3px solid var(--bcolor);
-    border-radius: 5px;
-    padding: 10px 15px;
+  background-color: var(--bk2);
+  backdrop-filter: blur(3px);
+  width: 300px;
+  height: 430px;
+  border: 3px solid var(--bcolor);
+  border-radius: 5px;
+  padding: 10px 15px;
 }
 
 .text_area {
-    width: 100%;
-    font-size: 16px;
-    min-height: 40px;
-    max-height: 40px;
-    overflow-y: scroll;
-    resize: none;
-    padding: 1px;
-    overflow: hidden;
-    background-color: transparent;
-    color: var(--white);
-    border: 0;
-    outline: 0px none transparent;
-    margin-bottom: 5px;
+  width: 100%;
+  font-size: 16px;
+  min-height: 40px;
+  max-height: 40px;
+  overflow-y: scroll;
+  resize: none;
+  padding: 1px;
+  overflow: hidden;
+  background-color: transparent;
+  color: var(--white);
+  border: 0;
+  outline: 0px none transparent;
+  margin-bottom: 5px;
 }
 
 .text_area_active {
-    outline: 1px solid var(--bcolor);
-    resize: vertical;
-    max-height: 60px !important;
+  outline: 1px solid var(--bcolor);
+  resize: vertical;
+  max-height: 60px !important;
 }
 
 .text_area_fixed {
-    width: 100%;
-    font-size: 16px;
-    height: auto;
-    overflow: hidden;
-    resize: none;
-    padding: 0;
-    overflow: hidden;
-    background-color: transparent;
-    color: var(--white);
-    border: 0;
-    outline: 0px none transparent;
+  width: 100%;
+  font-size: 16px;
+  height: auto;
+  overflow: hidden;
+  resize: none;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+  color: var(--white);
+  border: 0;
+  outline: 0px none transparent;
 }
 
 .text_area:active {
-    border: 0;
+  border: 0;
 }
 
 .button_container {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 5px;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 5px;
 }
 
 .error {
-    display: block;
-    color: red;
-    margin: 5px 0;
+  display: block;
+  color: red;
+  margin: 5px 0;
 }

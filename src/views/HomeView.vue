@@ -1,36 +1,41 @@
 <script setup>
-import CardList from '../components/CardList/index.vue'
-import "./index.css"
+import CardList from "../components/CardList/index.vue";
+import "./index.css";
 </script>
 
 <template>
   <div class="search">
-    <form action="">
-      <input type="text" class="search_input" />
-    </form>
-    <button type="button" class="btn" @click="showDialog = true">Create Card</button>
+    <input type="text" v-model="search" class="search_input" />
+    <button type="button" class="btn" @click="showDialog = true">
+      Create Card
+    </button>
   </div>
+
+  <CardList :quotes="filteredQuotes" />
   <DialogCreator :show="showDialog" :cancel="cancel" :rebuild="rebuild">
   </DialogCreator>
-  <CardList :quotes="quotes" />
-  
 
+  <!--Test
+  <div v-for="card in filteredQuotes" :key="card.id">
+        <Card :card="card"></Card>
+    </div>
+  -->
 </template>
 
 <script>
-
-import { useLoadQuotes } from "../firebase"
-import DialogCreator from '../components/CardCreatePop/index.vue'
+import { useLoadQuotes } from "../firebase";
+import Card from "../components/Card/index.vue";
+import DialogCreator from "../components/CardCreatePop/index.vue";
 export default {
-  name: 'HomeView',
-  components: { DialogCreator },
-  setup() {
-  },
+  name: "HomeView",
+  components: { DialogCreator, CardList, Card },
+  setup() {},
   data() {
     return {
       showDialog: false,
+      search: "",
       quotes: useLoadQuotes(),
-    }
+    };
   },
   methods: {
     cancel() {
@@ -38,10 +43,14 @@ export default {
     },
     rebuild() {
       this.quotes = useLoadQuotes();
-    }
+    },
   },
-
-}
-
-
+  computed: {
+    filteredQuotes() {
+      return this.quotes.filter((q) =>
+        q.Text.toLowerCase().includes(this.search.toLowerCase())
+      );
+    },
+  },
+};
 </script>

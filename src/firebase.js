@@ -1,7 +1,6 @@
 import firebase from "firebase";
-import "firebase/firestore"
+import "firebase/firestore";
 import { ref, onUnmounted } from "vue";
-
 
 const config = {
   apiKey: "AIzaSyBwR22Q162Mty1nGSnmSmXYK15AdX7SAHM",
@@ -37,12 +36,11 @@ export const deleteQuote = (id) => {
 };
 
 export const useLoadQuotes = () => {
-  const quotes = ref([])
-  const close = quotesCollection.onSnapshot(snapshot => {
-    quotes.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-  })
-  onUnmounted(close)
+  const quotes = ref([]);
+  const close = quotesCollection.onSnapshot((snapshot) => {
+    quotes.value = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  });
+  onUnmounted(close);
   //console.log(quotes)
-  return quotes
-    
+  return quotes;
 };

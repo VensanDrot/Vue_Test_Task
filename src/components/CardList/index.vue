@@ -1,27 +1,18 @@
 <template>
-    <div class="card_holder">
-
-
-        <div class="aligner" v-for="card in quotes" :key="card.Id">
-             
-            <Card :key="card.Id" :card="card" />
-
-        </div>
-
+  <div class="card_holder">
+    <div v-for="card in quotes" :key="card.id">
+      <Card :card="card"></Card>
     </div>
+  </div>
 </template>
 
-
 <script>
-import './index.css'
-import Card from '../Card/index.vue'
-import { useLoadQuotes, deleteQuote } from '@/firebase'
+import "./index.css";
+import Card from "../Card/index.vue";
 
 export default {
-    name:'CardList',
-    props:['quotes'],
-    components: { Card },
-}
-
-
+  name: "CardList",
+  props: ["quotes"],
+  components: { Card },
+};
 </script>
