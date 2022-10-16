@@ -1,20 +1,20 @@
 .overlay_create {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 100%;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 100;
 }
 
 .dialog_create {
-  border-radius: 0.75rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2.5rem;
-  width: fit-content;
-  z-index: 100;
+    border-radius: 0.75rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5rem;
+    width: fit-content;
+    z-index: 100;
 }

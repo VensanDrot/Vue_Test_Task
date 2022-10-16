@@ -47,8 +47,11 @@ export default {
   },
   computed: {
     filteredQuotes() {
-      return this.quotes.filter((q) =>
-        q.Text.toLowerCase().includes(this.search.toLowerCase())
+ 
+      return this.quotes.filter((q) => {
+        if(q.Text.toLowerCase().includes(this.search.toLowerCase()) || q.Author.toLowerCase().includes(this.search.toLowerCase()))
+        return q;    
+      }
       );
     },
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="card_holder">
-    <div v-for="card in quotes" :key="card.id">
+    <div class="card_in" v-for="card in quotes" :key="card.id">
       <Card :card="card"></Card>
     </div>
   </div>

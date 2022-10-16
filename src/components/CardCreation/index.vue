@@ -4,6 +4,7 @@ import "../Card/index.vue";
 
 <template>
   <div class="card_container">
+    <h3>Create Form</h3>
     <form class="content">
       <label>The quote:</label>
       <textarea
