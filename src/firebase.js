@@ -19,7 +19,7 @@ const db = firebaseApp.firestore();
 const quotesCollection = db.collection("quotes");
 
 export const createQuote = (quote) => {
-  console.log(quote);
+  //console.log(quote);
   return quotesCollection.add(quote);
 };
 
@@ -42,11 +42,7 @@ export const useLoadQuotes = () => {
     quotes.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
-  console.log(quotes)
+  //console.log(quotes)
   return quotes
     
 };
-/*
- var quote = [doc.data()];
-        quotes.push(quote)
-*/
