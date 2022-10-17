@@ -92,23 +92,34 @@ export default {
     },
     //Sort By Edit Time
     byEdit(a, b) {
-      if (a.Edit_Time > b.Edit_Time) {
+      if (a.Edit_Time.split(' ')[1] > b.Edit_Time.split(' ')[1]) {
         return 1;
-      } else if (b.Edit_Time > a.Edit_Time) {
+      } else if (b.Edit_Time.split(' ')[1] > a.Edit_Time.split(' ')[1]) {
+        return -1;
+      }  
+      if (a.Edit_Time.split(' ')[0] > b.Edit_Time.split(' ')[0]) {
+        return 1;
+      } else if (b.Edit_Time.split(' ')[0] > a.Edit_Time.split(' ')[0]) {
         return -1;
       } else {
         return 0;
       }
     },
     //Sort By Create Time
-    byCreate(a, b) {
-      if (a.Create_Time > b.Create_Time) {
+    byCreate(a, b) {  
+      if (a.Create_Time.split(' ')[1] > b.Create_Time.split(' ')[1]) {
         return 1;
-      } else if (b.Create_Time > a.Create_Time) {
+      } else if (b.Create_Time.split(' ')[1] > a.Create_Time.split(' ')[1]) {
+        return -1;
+      }  
+      if (a.Create_Time.split(' ')[0] > b.Create_Time.split(' ')[0]) {
+        return 1;
+      } else if (b.Create_Time.split(' ')[0] > a.Create_Time.split(' ')[0]) {
         return -1;
       } else {
         return 0;
       }
+      
     },
     //Sort By Author
     byAuthor(a, b) {
