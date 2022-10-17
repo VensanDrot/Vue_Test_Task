@@ -8,10 +8,14 @@
 
 .flexer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     gap: 2rem;
     margin-bottom: 1rem;
+}
+
+.flexer button {
+    width: 111px;
 }
 
 .search_input {
@@ -21,8 +25,7 @@
 }
 
 .selector {
-    width: 205px;
-    margin-left: -9.2rem;
+    width: 203.78px;
     padding: 0.45rem 0.9rem;
     border: 3px solid var(--bcolor);
     border-radius: 5px;
@@ -33,12 +36,12 @@
         margin-top: 0.5rem;
         padding: 0.5rem;
         flex-direction: column;
-        gap: 1rem;
     }
     .flexer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 0.5rem;
     }
     .selector {
         margin: 0;

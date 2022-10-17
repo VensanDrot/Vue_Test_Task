@@ -7,15 +7,18 @@ import "./index.css";
   <div class="search">
   <div class="flexer">
     <input type="text" v-model="search" class="search_input" placeholder="Search" />
-    <select class="selector" v-model="filter_type" :onchange="Change">
-        <option value="e_date">By Edit Date</option>
-        <option value="c_date">By Create Date</option>
-    </select>
+    <button type="button" class="btn" @click="search=''">
+      Clear Input
+    </button>
     
   </div>
   
   <div class="flexer">
-    
+    <select class="selector" v-model="filter_type" :onchange="Change">
+        <option value="Filters" selected disabled>Filters</option>
+        <option value="e_date">By Edit Date</option>
+        <option value="c_date">By Create Date</option>
+    </select>
     <button type="button" class="btn" @click="showDialog = true">
       Create Card
     </button>
@@ -42,7 +45,7 @@ export default {
       showDialog: false,
       search: "",
       quotes: useLoadQuotes(),
-      filter_type: 'Select Filter',
+      filter_type: 'Filters',
     };
   },
   methods: {
