@@ -38,8 +38,3 @@
         grid-template-columns: 1fr;
     }
 }
-
-
-/* ================== MEDIA QUERIES (Extra SMALL DEVICES) ============= */
-
-@media screen and (max-width: 450px) {}

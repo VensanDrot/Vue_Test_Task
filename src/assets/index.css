@@ -39,6 +39,7 @@ h1 {
     height: auto;
     margin: 0 auto;
     overflow: hidden;
+    margin-bottom: 1rem;
 }
 
 .btn {

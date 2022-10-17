@@ -44,3 +44,14 @@ export const useLoadQuotes = () => {
   //console.log(quotes)
   return quotes;
 };
+
+export const UseLoadAuthorsGenre = () => {
+  const authorgenre = ref([]);
+  const close = quotesCollection.onSnapshot((snapshot)=> {
+    authorgenre.value = snapshot.docs.map((doc)=> ({ author: doc.data().Author, genre: doc.data().Genre}))
+  })
+  onUnmounted(close)
+  
+  return authorgenre;
+}
+
