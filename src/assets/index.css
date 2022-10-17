@@ -1,105 +1,102 @@
 * {
-    outline: 0px none transparent;
-    margin: 0;
-    padding: 0;
+  outline: 0px none transparent;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-    --blue: #1e90ff;
-    --white: #ffffff;
-    --bk1: rgb(77, 17, 16);
-    --bk2: rgba(87, 17, 16, 0.7);
-    --bk3: rgba(119, 26, 12);
-    --bcolor: rgb(162, 139, 113);
-    --pink: #ff3c78;
-    --transition: 0.5s;
-    --container-width-lg: 75%;
-    --container-width-md: 86%;
-    --container-width-sm: 90%;
+  --blue: #1e90ff;
+  --white: #ffffff;
+  --bk1: rgb(77, 17, 16);
+  --bk2: rgba(87, 17, 16, 0.7);
+  --bk3: rgba(119, 26, 12);
+  --bcolor: rgb(162, 139, 113);
+  --pink: #ff3c78;
+  --transition: 0.5s;
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    background-image: url(./bk.jpg);
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  background-image: url(./bk.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 .container {
-    width: var(--container-width-lg);
-    height: auto;
-    margin: 0 auto;
-    overflow: hidden;
-    margin-bottom: 1rem;
+  width: var(--container-width-lg);
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .btn {
-    width: max-content;
-    display: inline-block;
-    font-weight: 600;
-    color: var(--bk1);
-    padding: 0.45rem 0.9rem;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    border: 3px solid var(--bcolor);
-    transition: var(--transition);
+  width: max-content;
+  display: inline-block;
+  font-weight: 600;
+  color: var(--bk1);
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 3px solid var(--bcolor);
+  transition: var(--transition);
 }
 
 .btn:hover {
-    background-color: var(--bk2);
-    color: var(--white);
-    border-color: transparent;
+  background-color: var(--bk2);
+  color: var(--white);
+  border-color: transparent;
 }
 
 .btn-primary {
-    color: var(--white);
-    background-color: var(--bk1);
+  color: var(--white);
+  background-color: var(--bk1);
 }
 
 .btn-primary:hover {
-    background-color: var(--bk3);
+  background-color: var(--bk3);
 }
 
 .welcome {
-    margin-top: 3rem;
-    text-align: center;
+  margin-top: 3rem;
+  text-align: center;
 }
-
 
 /* ================== MEDIA QUERIES (MEDIUM DEVICES) ============= */
 
 @media screen and (max-width: 1024px) {
-    .container {
-        width: var(--container-width-md);
-    }
+  .container {
+    width: var(--container-width-md);
+  }
 }
-
 
 /* ================== MEDIA QUERIES (SMALL DEVICES) ============= */
 
 @media screen and (max-width: 600px) {
-    .container {
-        width: var(--container-width-sm);
-    }
-    .welcome {
-        margin-top: 1.2rem;
-    }
+  .container {
+    width: var(--container-width-sm);
+  }
+  .welcome {
+    margin-top: 1.2rem;
+  }
 }
-
 
 /* ================== MEDIA QUERIES (Extra SMALL DEVICES) ============= */
 
 @media screen and (max-width: 450px) {
-    .container {
-        width: var(--container-width-sm);
-    }
+  .container {
+    width: var(--container-width-sm);
+  }
 }

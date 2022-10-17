@@ -1,63 +1,61 @@
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 100;
 }
 
 .dialog {
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 0.75rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5rem;
-    max-width: 100%;
-    width: 24rem;
-    z-index: 100;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0.75rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5rem;
+  max-width: 100%;
+  width: 24rem;
+  z-index: 100;
 }
 
 .dialog__content {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .dialog__title {
-    font-weight: 500;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    margin-bottom: 0.5rem;
-    color: rgba(17, 24, 39, 1);
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: rgba(17, 24, 39, 1);
 }
 
 .dialog__description {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    margin-bottom: 1rem;
-    color: rgba(107, 114, 128, 1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
+  color: rgba(107, 114, 128, 1);
 }
 
 .dialog__footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem;
-    gap: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  gap: 1rem;
 }
-
 
 /* ================== MEDIA QUERIES (SMALL DEVICES) ============= */
 
 @media screen and (max-width: 600px) {
-    .dialog {
-        width: 22rem;
-    }
+  .dialog {
+    width: 22rem;
+  }
 }
-
 
 /* ================== MEDIA QUERIES (Extra SMALL DEVICES) ============= */

@@ -53,6 +53,9 @@
       </textarea>
 
       <div class="button_container">
+        <button class="btn" type="button" v-if="check()" @click="this.cancel">
+          Cancel
+        </button>
         <button
           class="btn"
           type="button"
@@ -64,7 +67,7 @@
         <button
           class="btn btn-primary"
           type="button"
-          @click="edit(id)"
+          @click="edit(id), check_update()"
           v-if="!validated"
         >
           Submit
@@ -81,7 +84,7 @@
   </div>
   <Dialog
     :show="showDialog"
-    :cancel="cancel"
+    :cancel="cancel_dialog"
     :confirm="confirm"
     :id="card.id"
     title="Delete a quote?"
@@ -98,7 +101,7 @@ import { ref } from "vue";
 
 export default {
   name: "card",
-  props: ["card"],
+  props: ["card", "cancel", "rebuild"],
   components: { Dialog },
   data: function () {
     return {
@@ -118,13 +121,30 @@ export default {
     };
   },
   methods: {
-    cancel() {
+    //close pop up dialog
+    cancel_dialog() {
       this.showDialog = false;
     },
+    //check if display button
+    check() {
+      if (this.cancel) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    //Check for pop up Random Card if new to fetch new data
+    check_update() {
+      if (this.check()) {
+        this.rebuild();
+      }
+    },
+    //Delete Confirm 
     confirm(id) {
       deleteQuote(id);
       this.showDialog = false;
     },
+    //Get New Data for Quote
     edit() {
       this.error_text = null;
       this.error_author = null;
@@ -156,6 +176,7 @@ export default {
       updateQuote(this.id, this.quote);
       this.validated = !this.validated;
     },
+    //If Update Cancel Get Last Values
     save(card) {
       this.id = card.id;
       this.quote.Author = card.Author;
@@ -164,7 +185,6 @@ export default {
       this.quote.Create_Time = card.Create_Time;
       this.quote.Edit_Time = card.Edit_Time;
     },
-    
   },
 };
 </script>

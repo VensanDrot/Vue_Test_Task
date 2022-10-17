@@ -1,49 +1,49 @@
 .search {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem auto;
-    padding: 1.2rem;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  padding: 1.2rem;
+  justify-content: center;
 }
 
 .flexer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
 .flexer button {
-    width: 111px;
+  width: 111px;
 }
 
 .search_input {
-    padding: 0.45rem 0.9rem;
-    border: 3px solid var(--bcolor);
-    border-radius: 5px;
+  padding: 0.45rem 0.9rem;
+  border: 3px solid var(--bcolor);
+  border-radius: 5px;
 }
 
 .selector {
-    width: 203.78px;
-    padding: 0.45rem 0.9rem;
-    border: 3px solid var(--bcolor);
-    border-radius: 5px;
+  width: 203.78px;
+  padding: 0.45rem 0.9rem;
+  border: 3px solid var(--bcolor);
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 820px) {
-    .search {
-        margin-top: 0.5rem;
-        padding: 0.5rem;
-        flex-direction: column;
-    }
-    .flexer {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-    .selector {
-        margin: 0;
-    }
+  .search {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    flex-direction: column;
+  }
+  .flexer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .selector {
+    margin: 0;
+  }
 }

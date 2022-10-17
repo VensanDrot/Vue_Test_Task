@@ -55,6 +55,7 @@ export default {
     };
   },
   methods: {
+    //Check if Quote is suitable for FireBase
     getData() {
       this.error_text = null;
       this.error_author = null;
