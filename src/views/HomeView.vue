@@ -116,16 +116,23 @@ export default {
       return 0;
     },
     selectCard() {
-      if(this.quotearray.length < 1 || this.quotearray === null) {
+      if(this.quotearray.length === 0 || this.quotearray === null) {
         console.log('rebuild')
         this.quotearray = useLoadQuotes();
       }
       
       //console.log(this.quotearray)
-      let rnum = Math.round(Math.random() * this.quotearray.length);
+      let rnum = Math.round(Math.random() * this.quotearray.length-1);
+      if(rnum <0) {
+        rnum++;
+      }
       let card = this.quotearray[rnum];
       this.quotearray.splice(rnum,1);
-      console.log(card)
+
+      if(this.quotearray.length === 0 || this.quotearray === null) {
+        console.log('rebuild')
+        this.quotearray = useLoadQuotes();
+      }
       return card
       
     },  
