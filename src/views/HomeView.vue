@@ -39,9 +39,9 @@ import "./index.css";
     </button>
   </div>
 
-  <h1 style="text-align: center" :hidden="quotes">
-    <img src="../assets/loading.gif" />
-  </h1>
+  <div class="image" >
+    <img src="../assets/load.gif" :hidden="quotes"/>
+  </div>
 
   <CardList :quotes="filteredQuotes" />
 
