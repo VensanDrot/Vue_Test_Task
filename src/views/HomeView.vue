@@ -29,14 +29,22 @@ import "./index.css";
         Create Card
       </button>
     </div>
+
+    <div class="flexer">
+      <select class="selector" v-model="range_type" :onchange="Range">
+        <option value="Filters" selected disabled>Range setting</option>
+        <option value="NewOld">From Min To Max</option>
+        <option value="OldNew">From Max to Min</option>
+      </select>
     <button
       style="align-self: center"
       type="button"
       @click="(showRDialog = true), (element = selectCard())"
       class="btn"
     >
-      Random Quote
+      Сhance card
     </button>
+    </div>
   </div>
 
   <div class="image" >
@@ -74,9 +82,11 @@ export default {
       search: "",
       quotes: useLoadQuotes(),
       filter_type: "Filters",
+      range_type: "Filters",
       author: UseLoadAuthorsGenre(),
       quotearray: useLoadQuotes(),
       element: null,
+      order: 1,
     };
   },
   methods: {
@@ -92,15 +102,16 @@ export default {
     },
     //Sort By Edit Time
     byEdit(a, b) {
+  
       if (a.Edit_Time.split(' ')[1] > b.Edit_Time.split(' ')[1]) {
-        return 1;
+        return 1 * this.order;
       } else if (b.Edit_Time.split(' ')[1] > a.Edit_Time.split(' ')[1]) {
-        return -1;
+        return -1 * this.order;
       }  
       if (a.Edit_Time.split(' ')[0] > b.Edit_Time.split(' ')[0]) {
-        return 1;
+        return 1 * this.order;
       } else if (b.Edit_Time.split(' ')[0] > a.Edit_Time.split(' ')[0]) {
-        return -1;
+        return -1 * this.order;
       } else {
         return 0;
       }
@@ -108,16 +119,16 @@ export default {
     //Sort By Create Time
     byCreate(a, b) {  
       if (a.Create_Time.split(' ')[1] > b.Create_Time.split(' ')[1]) {
-        return 1;
+        return 1 * this.order;
       } else if (b.Create_Time.split(' ')[1] > a.Create_Time.split(' ')[1]) {
-        return -1;
+        return -1 * this.order;
       }  
       if (a.Create_Time.split(' ')[0] > b.Create_Time.split(' ')[0]) {
         return 1;
       } else if (b.Create_Time.split(' ')[0] > a.Create_Time.split(' ')[0]) {
-        return -1;
+        return -1 * this.order;
       } else {
-        return 0;
+        return 0 * this.order;
       }
       
     },
@@ -185,6 +196,16 @@ export default {
         this.quotes.sort(this.byGenre);
       }
     },
+    Range() {
+      if (this.range_type === "NewOld") {
+        this.order = 1;
+      } else if (this.range_type === "OldNew") {
+        this.order = -1;
+      }
+      else {
+        this.order = 1;
+      }
+    }
   },
 };
 </script>
