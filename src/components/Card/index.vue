@@ -164,6 +164,7 @@ export default {
       this.quote.Create_Time = card.Create_Time;
       this.quote.Edit_Time = card.Edit_Time;
     },
+    
   },
 };
 </script>

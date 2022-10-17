@@ -27,21 +27,30 @@ import "./index.css";
     </div>
   </div>
    
-   
+  <h1 style="text-align:center" :hidden="quotes"><img src="../assets/loading.gif"/></h1>
+  <button type="button" @click=" showRDialog=true, element=selectCard() " class="btn">Here</button>
+
+
+
   <CardList :quotes="filteredQuotes" />
   <DialogCreator  :show="showDialog" :cancel="cancel" :rebuild="rebuild">
   </DialogCreator>
-]
+
+  <DialogCard v-if="element" :show="showRDialog" :cancel="cancel" :card="element"></DialogCard>
+  
 </template>
 
 <script>
 import { useLoadQuotes, UseLoadAuthorsGenre } from "../firebase";
 import DialogCreator from "../components/CardCreatePop/index.vue";
+import DialogCard from "../components/CardDisplay/index.vue";
+import { ref } from "vue";
+
 
 
 export default {
   name: "HomeView",
-  components: { DialogCreator,CardList },
+  components: { DialogCreator,CardList, DialogCard },
   data() {
     return {
       showDialog: false,
@@ -50,13 +59,15 @@ export default {
       quotes: useLoadQuotes(),
       filter_type: 'Filters',
       author: UseLoadAuthorsGenre(),
-      quotearray: null,
+      quotearray: useLoadQuotes(),
+      element: null,
     };
   },
   methods: {
     cancel() {
       this.showDialog = false;
       this.showRDialog = false;
+      this.element = null;
     },
     hide() {
       this.showRDialog = false;
@@ -104,7 +115,20 @@ export default {
       }
       return 0;
     },
-   
+    selectCard() {
+      if(this.quotearray.length < 1 || this.quotearray === null) {
+        console.log('rebuild')
+        this.quotearray = useLoadQuotes();
+      }
+      
+      //console.log(this.quotearray)
+      let rnum = Math.round(Math.random() * this.quotearray.length);
+      let card = this.quotearray[rnum];
+      this.quotearray.splice(rnum,1);
+      console.log(card)
+      return card
+      
+    },  
   },
   computed: {
     filteredQuotes() {
