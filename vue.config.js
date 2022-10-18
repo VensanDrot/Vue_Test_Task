@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: 'https://vensandrot.github.io',
+    publicPath: '/vensanDrot.github.io/',
   };
