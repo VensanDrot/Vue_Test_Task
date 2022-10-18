@@ -29,7 +29,7 @@
       >
       </textarea>
 
-      <label v-if="!validated">{{ error_genre }}</label>
+      <label class="error" v-if="!validated">{{ error_genre }}</label>
       <label v-if="validated">Id:</label>
       <textarea class="text_area_fixed" v-model="id" v-if="validated" readonly>
       </textarea>

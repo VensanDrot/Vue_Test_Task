@@ -1,6 +1,7 @@
 <script setup>
 import CardList from "../components/CardList/index.vue";
 import "./index.css";
+import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 </script>
 
 <template>
@@ -11,7 +12,6 @@ import "./index.css";
         Clear Input
       </button>
     </div>
-    {{author_reducer()}}
     <div class="flexer">
       <select class="selector" v-model="filter_type" :onchange="Change">
         <option value="Filters" selected disabled>Filters</option>
@@ -36,12 +36,13 @@ import "./index.css";
         Сhance card
       </button>
     </div>
+    <button class="btn" style="align-self: center" @click="showAuthor=true">show authors</button>
   </div>
 
   <div class="image">
     <img src="../assets/load.gif" :hidden="quotes" />
   </div>
-  {{}}
+
   <CardList :quotes="filteredQuotes" />
 
   <DialogCreator :show="showDialog" :cancel="cancel" :rebuild="rebuild">
@@ -49,23 +50,24 @@ import "./index.css";
 
   <DialogCard v-if="element" :show="showRDialog" :cancel="cancel" :rebuild="rebuild" :card="element">
   </DialogCard>
+
+  <AuthorDisplay :show="showAuthor" :cancel="cancel" :author="author_reducer()"></AuthorDisplay>
 </template>
 
 <script>
 import { useLoadQuotes, UseLoadAuthorsGenre } from "../firebase";
 import DialogCreator from "../components/CardCreatePop/index.vue";
 import DialogCard from "../components/CardDisplay/index.vue";
-import { ref } from "vue";
-import { compileScript } from "@vue/compiler-sfc";
-import { concat } from "bytebuffer";
+import DisplayAuthor from "../components/AuthorDisplay/index.vue";
 
 export default {
   name: "HomeView",
-  components: { DialogCreator, CardList, DialogCard },
+  components: { DialogCreator, CardList, DialogCard, DisplayAuthor },
   data() {
     return {
       showDialog: false,
       showRDialog: false,
+      showAuthor: false,
       search: "",
       quotes: useLoadQuotes(),
       filter_type: "Filters",
@@ -79,6 +81,7 @@ export default {
   methods: {
     //cancel pop up && element for random set null
     cancel() {
+      this.showAuthor = false;
       this.showDialog = false;
       this.showRDialog = false;
       this.element = null;
@@ -105,8 +108,8 @@ export default {
           return acc;
         }
       }, []);
-       
-      console.log(filteredArr)
+       console.log( filteredArr)
+       return filteredArr
 
     },
     //Sort By Edit Time
