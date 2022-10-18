@@ -8,13 +8,13 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 <template>
   <div class="search">
       <div class="flexer">
-      <input type="text" v-model="search" class="search_input" placeholder="Search" />
+      <input type="text" v-model="this.search" class="search_input" placeholder="Search" />
       <button type="button" class="btn" @click="search = ''">
         Clear Input
       </button>
     </div>
     <div class="flexer">
-      <select class="selector" v-model="filter_type" :onchange="Change">
+      <select class="selector" v-model="this.filter_type" :onchange="Change">
         <option value="Filters" selected disabled>Filters</option>
         <option value="e_date">By Edit Date</option>
         <option value="c_date">By Create Date</option>
@@ -27,7 +27,7 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
     </div>
 
     <div class="flexer">
-      <select class="selector" v-model="range_type" :onchange="Range">
+      <select class="selector" v-model="this.range_type" :onchange="Range">
         <option value="Filters" selected disabled>Range setting</option>
         <option value="NewOld">From Min To Max</option>
         <option value="OldNew">From Max to Min</option>
