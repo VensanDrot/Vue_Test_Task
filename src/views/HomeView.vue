@@ -4,6 +4,7 @@ import "./index.css";
 import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 </script>
 
+
 <template>
   <div class="search">
       <div class="flexer">
