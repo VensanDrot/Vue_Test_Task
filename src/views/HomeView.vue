@@ -56,7 +56,7 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 </template>
 
 <script>
-import { computed } from "vue";
+import { ref } from "vue";
 import { useLoadQuotes, UseLoadAuthorsGenre } from "../firebase";
 import DialogCreator from "../components/CardCreatePop/index.vue";
 import DialogCard from "../components/CardDisplay/index.vue";
@@ -67,17 +67,17 @@ export default {
   components: { DialogCreator, CardList, DialogCard, DisplayAuthor },
   data() {
     return {
-      showDialog: false,
-      showRDialog: false,
-      showAuthor: false,
-      search: "",
+      showDialog: ref(false),
+      showRDialog: ref(false),
+      showAuthor: ref(false),
+      search: ref(""),
       quotes: useLoadQuotes(),
-      filter_type: "Filters",
-      range_type: "Filters",
+      filter_type: ref("Filters"),
+      range_type: ref("Filters"),
       author: UseLoadAuthorsGenre(),
       quotearray: useLoadQuotes(),
-      element: null,
-      order: 1,
+      element: ref(null),
+      order: ref(1),
     };
   },
   methods: {
