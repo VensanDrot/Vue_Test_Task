@@ -56,6 +56,7 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 </template>
 
 <script>
+import { computed } from "vue";
 import { useLoadQuotes, UseLoadAuthorsGenre } from "../firebase";
 import DialogCreator from "../components/CardCreatePop/index.vue";
 import DialogCard from "../components/CardDisplay/index.vue";
@@ -184,7 +185,7 @@ export default {
       return card;
     },
   },
-  computed: {
+  $computed: {
     //on search input change activate search filter
     filteredQuotes() {
       return this.quotes.filter((q) => {
