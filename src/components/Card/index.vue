@@ -139,7 +139,7 @@ export default {
         this.rebuild();
       }
     },
-    //Delete Confirm 
+    //Delete Confirm
     confirm(id) {
       deleteQuote(id);
       this.showDialog = false;

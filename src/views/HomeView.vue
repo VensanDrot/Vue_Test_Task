@@ -6,17 +6,12 @@ import "./index.css";
 <template>
   <div class="search">
     <div class="flexer">
-      <input
-        type="text"
-        v-model="search"
-        class="search_input"
-        placeholder="Search"
-      />
+      <input type="text" v-model="search" class="search_input" placeholder="Search" />
       <button type="button" class="btn" @click="search = ''">
         Clear Input
       </button>
     </div>
-
+    {{author_reducer()}}
     <div class="flexer">
       <select class="selector" v-model="filter_type" :onchange="Change">
         <option value="Filters" selected disabled>Filters</option>
@@ -36,33 +31,23 @@ import "./index.css";
         <option value="NewOld">From Min To Max</option>
         <option value="OldNew">From Max to Min</option>
       </select>
-    <button
-      style="align-self: center"
-      type="button"
-      @click="(showRDialog = true), (element = selectCard())"
-      class="btn"
-    >
-      Сhance card
-    </button>
+      <button style="align-self: center" type="button" @click="(showRDialog = true), (element = selectCard())"
+        class="btn">
+        Сhance card
+      </button>
     </div>
   </div>
 
-  <div class="image" >
-    <img src="../assets/load.gif" :hidden="quotes"/>
+  <div class="image">
+    <img src="../assets/load.gif" :hidden="quotes" />
   </div>
-
+  {{}}
   <CardList :quotes="filteredQuotes" />
 
   <DialogCreator :show="showDialog" :cancel="cancel" :rebuild="rebuild">
   </DialogCreator>
 
-  <DialogCard
-    v-if="element"
-    :show="showRDialog"
-    :cancel="cancel"
-    :rebuild="rebuild"
-    :card="element"
-  >
+  <DialogCard v-if="element" :show="showRDialog" :cancel="cancel" :rebuild="rebuild" :card="element">
   </DialogCard>
 </template>
 
@@ -71,6 +56,8 @@ import { useLoadQuotes, UseLoadAuthorsGenre } from "../firebase";
 import DialogCreator from "../components/CardCreatePop/index.vue";
 import DialogCard from "../components/CardDisplay/index.vue";
 import { ref } from "vue";
+import { compileScript } from "@vue/compiler-sfc";
+import { concat } from "bytebuffer";
 
 export default {
   name: "HomeView",
@@ -100,14 +87,34 @@ export default {
     rebuild() {
       this.quotes = useLoadQuotes();
     },
+    author_reducer() {
+
+      const filteredArr = this.author.reduce((acc, current) => {
+        const x = acc.find(item => item.author === current.author);
+        const index = acc.indexOf(x)
+        if (!x) {
+          return acc.concat([current]);
+        } else {
+          console.log("cutting")
+          //acc[index].genre.concat(` ${current.genre}`)
+          acc[index] = new Proxy({
+            author: acc[index].author,
+            genre: acc[index].genre.concat(` ${current.genre}`)
+          },{})
+          return acc;
+        }
+      }, []);
+      console.log(filteredArr)
+
+    },
     //Sort By Edit Time
     byEdit(a, b) {
-  
+
       if (a.Edit_Time.split(' ')[1] > b.Edit_Time.split(' ')[1]) {
         return 1 * this.order;
       } else if (b.Edit_Time.split(' ')[1] > a.Edit_Time.split(' ')[1]) {
         return -1 * this.order;
-      }  
+      }
       if (a.Edit_Time.split(' ')[0] > b.Edit_Time.split(' ')[0]) {
         return 1 * this.order;
       } else if (b.Edit_Time.split(' ')[0] > a.Edit_Time.split(' ')[0]) {
@@ -117,12 +124,12 @@ export default {
       }
     },
     //Sort By Create Time
-    byCreate(a, b) {  
+    byCreate(a, b) {
       if (a.Create_Time.split(' ')[1] > b.Create_Time.split(' ')[1]) {
         return 1 * this.order;
       } else if (b.Create_Time.split(' ')[1] > a.Create_Time.split(' ')[1]) {
         return -1 * this.order;
-      }  
+      }
       if (a.Create_Time.split(' ')[0] > b.Create_Time.split(' ')[0]) {
         return 1;
       } else if (b.Create_Time.split(' ')[0] > a.Create_Time.split(' ')[0]) {
@@ -130,7 +137,7 @@ export default {
       } else {
         return 0 * this.order;
       }
-      
+
     },
     //Sort By Author
     byAuthor(a, b) {
