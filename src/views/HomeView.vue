@@ -185,7 +185,7 @@ export default {
       return card;
     },
   },
-  $computed: {
+  computed: {
     //on search input change activate search filter
     filteredQuotes() {
       return this.quotes.filter((q) => {
