@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/vensanDrot.github.io/',
+    publicPath: '/Vue_Test_Task/',
   };
