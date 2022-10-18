@@ -6,7 +6,7 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 
 <template>
   <div class="search">
-    <div class="flexer">
+      <div class="flexer">
       <input type="text" v-model="search" class="search_input" placeholder="Search" />
       <button type="button" class="btn" @click="search = ''">
         Clear Input
@@ -108,7 +108,6 @@ export default {
           return acc;
         }
       }, []);
-       console.log( filteredArr)
        return filteredArr
 
     },
