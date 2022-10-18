@@ -95,15 +95,17 @@ export default {
         if (!x) {
           return acc.concat([current]);
         } else {
-          console.log("cutting")
-          //acc[index].genre.concat(` ${current.genre}`)
+          let set = acc[index].genre.concat(` ${current.genre}`);
+          let result = new Set(set.split(' '))
+          result = Array.from(result).join(' ');
           acc[index] = new Proxy({
             author: acc[index].author,
-            genre: acc[index].genre.concat(` ${current.genre}`)
-          },{})
+            genre: result
+          },{ })
           return acc;
         }
       }, []);
+       
       console.log(filteredArr)
 
     },
