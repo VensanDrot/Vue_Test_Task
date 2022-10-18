@@ -1,6 +1,6 @@
 <template>
-    <div v-show="show" class="overlay_create">
-      <div class="dialog_create">
+    <div v-show="show" class="overlay_create" style="overflow-y:auto">
+      <div class="dialog_create" >
         <div class="author_container">
         <button class="btn" @click="cancel">Close</button>
         
