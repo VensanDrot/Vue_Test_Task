@@ -1,10 +1,3 @@
-<script setup>
-import CardList from "../components/CardList/index.vue";
-import "./index.css";
-import AuthorDisplay from "../components/AuthorDisplay/index.vue";
-</script>
-
-
 <template>
   <div class="search">
       <div class="flexer">
@@ -56,11 +49,13 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 </template>
 
 <script>
+import "./index.css";
 import { ref } from "vue";
 import { useLoadQuotes, UseLoadAuthorsGenre } from "../firebase";
 import DialogCreator from "../components/CardCreatePop/index.vue";
 import DialogCard from "../components/CardDisplay/index.vue";
 import DisplayAuthor from "../components/AuthorDisplay/index.vue";
+import CardList from "../components/CardList/index.vue";
 
 export default {
   name: "HomeView",
