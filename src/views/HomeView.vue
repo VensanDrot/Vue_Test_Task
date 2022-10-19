@@ -9,7 +9,7 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
   <div class="search">
       <div class="flexer">
       <input type="text" v-model="$data.search" class="search_input" placeholder="Search" @change="filteredQuotes($data.search)" />
-      <button type="button" class="btn" @click="this.search = ''">
+      <button type="button" class="btn" @click="$data.search = ''">
         Clear Input
       </button>
     </div>
