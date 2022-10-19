@@ -157,7 +157,7 @@ export default {
         return (this.error_author = "Author cant be empty");
       }
 
-      if (specialChars.test(this.quote.Genre)) {
+      if (specialChars.test(this.quote.Author)) {
         return (this.error_author = "Author cant has characters");
       }
 
