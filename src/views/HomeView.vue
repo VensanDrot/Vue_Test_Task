@@ -1,5 +1,6 @@
 <script setup>
 import CardList from "../components/CardList/index.vue";
+import "./index.css";
 import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 </script>
 
@@ -7,13 +8,13 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 <template>
   <div class="search">
       <div class="flexer">
-      <input type="text" v-model="search" class="search_input" placeholder="Search" />
+      <input type="text" v-model="$data.search" class="search_input" placeholder="Search" @change="filteredQuotes($data.search)" />
       <button type="button" class="btn" @click="this.search = ''">
         Clear Input
       </button>
     </div>
     <div class="flexer">
-      <select class="selector" v-model="filter_type" :onchange="Change">
+      <select class="selector" v-model="$data.filter_type" :onchange="Change($data.filter_type)">
         <option value="Filters" selected disabled>Filters</option>
         <option value="e_date">By Edit Date</option>
         <option value="c_date">By Create Date</option>
@@ -26,7 +27,7 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
     </div>
 
     <div class="flexer">
-      <select class="selector" v-model="range_type" :onchange="Range">
+      <select class="selector" v-model="$data.range_type" :onchange="Range($data.range_type)">
         <option value="Filters" selected disabled>Range setting</option>
         <option value="NewOld">From Min To Max</option>
         <option value="OldNew">From Max to Min</option>
@@ -43,7 +44,7 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
     <img src="../assets/load.gif" :hidden="quotes" />
   </div>
 
-  <CardList :quotes="filteredQuotes" />
+  <CardList :quotes="filteredQuotes($data.search)" />
 
   <DialogCreator :show="showDialog" :cancel="cancel" :rebuild="rebuild">
   </DialogCreator>
@@ -56,7 +57,6 @@ import AuthorDisplay from "../components/AuthorDisplay/index.vue";
 
 <script>
 import { ref } from "vue";
-import "./index.css";
 import { useLoadQuotes, UseLoadAuthorsGenre } from "../firebase";
 import DialogCreator from "../components/CardCreatePop/index.vue";
 import DialogCard from "../components/CardDisplay/index.vue";
@@ -70,10 +70,10 @@ export default {
       showDialog: ref(false),
       showRDialog: ref(false),
       showAuthor: ref(false),
-      search: ref(""),
+      search: "",
       quotes: useLoadQuotes(),
-      filter_type: ref("Filters"),
-      range_type: ref("Filters"),
+      filter_type: "Filters",
+      range_type: "Filters",
       author: UseLoadAuthorsGenre(),
       quotearray: useLoadQuotes(),
       element: ref(null),
@@ -184,41 +184,42 @@ export default {
       }
       return card;
     },
-  },
-  computed: {
-    //on search input change activate search filter
-    filteredQuotes() {
+    filteredQuotes(search) {
+      console.log(search)
       return this.quotes.filter((q) => {
         if (
-          q.Text.toLowerCase().includes(this.search.toLowerCase()) ||
-          q.Author.toLowerCase().includes(this.search.toLowerCase()) ||
-          q.Genre.toLowerCase().includes(this.search.toLowerCase())
+          q.Text.toLowerCase().includes(search.toLowerCase()) ||
+          q.Author.toLowerCase().includes(search.toLowerCase()) ||
+          q.Genre.toLowerCase().includes(search.toLowerCase())
         )
           return q;
       });
     },
-    //on filter select activate filters
-    Change() {
-      if (this.filter_type === "e_date") {
+     Change(filter_type) {
+      if (filter_type === "e_date") {
         this.quotes.sort(this.byEdit);
-      } else if (this.filter_type === "c_date") {
+      } else if (filter_type === "c_date") {
         this.quotes.sort(this.byCreate);
-      } else if (this.filter_type === "author") {
+      } else if (filter_type === "author") {
         this.quotes.sort(this.byAuthor);
-      } else if (this.filter_type === "genre") {
+      } else if (filter_type === "genre") {
         this.quotes.sort(this.byGenre);
       }
     },
-    Range() {
-      if (this.range_type === "NewOld") {
+    Range(range_type) {
+      if (range_type === "NewOld") {
         this.order = 1;
-      } else if (this.range_type === "OldNew") {
+      } else if (range_type === "OldNew") {
         this.order = -1;
       }
       else {
         this.order = 1;
       }
-    }
+    },
   },
+    //on search input change activate search filter
+   
+    //on filter select activate filters
+   
 };
 </script>
