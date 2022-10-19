@@ -57,25 +57,34 @@ export default {
   methods: {
     //Check if Quote is suitable for FireBase
     getData() {
+      const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
       this.error_text = null;
       this.error_author = null;
       this.error_genre = null;
-
       if (!this.quote.Text || this.quote.Text.trim().length === 0) {
         return (this.error_text = "Text cant be empty");
       }
-      if (!this.quote.Author || this.quote.Author.trim().length === 0) {
+      if (!this.quote.Author || this.quote.Author.trim().length === 0 ) {
         return (this.error_author = "Author cant be empty");
       }
       if (/\d/.test(this.quote.Author)) {
         return (this.error_author = "Author line cant contain digits");
       }
-      if (!this.quote.Genre || this.quote.Genre.trim().length === 0) {
+
+      if (specialChars.test(this.quote.Author)) {
+        return (this.error_author = "Author cant has characters");
+      }
+
+      if (!this.quote.Genre || this.quote.Genre.trim().length === 0 ) {
         return (this.error_genre = "Genre cant be empty");
       }
       if (/\d/.test(this.quote.Genre)) {
         return (this.error_genre = "Genre line cant contain digits");
       }
+      if (specialChars.test(this.quote.Genre)) {
+        return (this.error_genre = "Genre cant has characters");
+      }
+
       const current = new Date();
       var hourse = current.getHours();
       var min = current.getMinutes();
