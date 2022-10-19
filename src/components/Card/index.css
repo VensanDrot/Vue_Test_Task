@@ -69,6 +69,7 @@ h3 {
 @media screen and (max-width: 600px) {
   .card_container {
     width: 280px;
+    height: 450px;
   }
 }
 

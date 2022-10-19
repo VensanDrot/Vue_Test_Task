@@ -175,6 +175,10 @@ export default {
       if (/\d/.test(this.quote.Genre)) {
         return (this.error_genre = "Genre line cant contain digits");
       }
+      this.quote.Text = this.quote.Text.trim();
+      this.quote.Author = this.quote.Author.trim();
+      this.quote.Genre = this.quote.Genre.trim();
+      console.log(this.quote.Text)
       const current = new Date();
       var hourse = current.getHours();
       hourse = ("0" + hourse).slice(-2);
