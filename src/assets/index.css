@@ -24,7 +24,7 @@ body {
     background-color: black;
     background-image: url(./bk.jpg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     background-position: center;
     background-attachment: scroll;
     color: white;
