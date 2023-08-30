@@ -24,8 +24,8 @@ body {
   background-color: black;
   background-image: url(./bk.jpg);
   background-repeat: no-repeat;
-  background-size: auto;
-  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
   background-attachment: fixed;
   color: white;
 }
