@@ -84,7 +84,9 @@ export default {
       if (specialChars.test(this.quote.Genre)) {
         return (this.error_genre = "Genre cant has characters");
       }
-
+      this.quote.Text = this.quote.Text.trim();
+      this.quote.Author = this.quote.Author.trim();
+      this.quote.Genre = this.quote.Genre.trim();
       const current = new Date();
       var hourse = current.getHours();
       var min = current.getMinutes();
